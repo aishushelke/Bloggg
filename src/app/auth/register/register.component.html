@@ -1,0 +1,87 @@
+<div class="container d-flex justify-content-center">
+    <form class="form-signin form-content-width border border-light p-5 " style="width: 50%;"
+     [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+    <h1 class="h3 mb-3 font-weight-normal text-center"><b>Register</b></h1>
+        <div class="form-group">
+            <div class="form-row">
+                <div class="col">
+            First Name:<input type="text" id="first_name" [formControlName]="'first_name'" placeholder="" class=" form-control mb-2">  
+            <div *ngIf="registerForm.get('first_name').touched">
+                <label *ngIf="registerForm.get('first_name').hasError('required')" class="text-danger warning-messages">Name Field is required</label>
+            
+            </div>
+                </div>
+            
+                <div class="col">
+            Last Name<input type="text" id="last_name" [formControlName]="'last_name'" placeholder="" class=" form-control mb-2">  
+            <div *ngIf="registerForm.get('last_name').touched">
+                <label *ngIf="registerForm.get('last_name').hasError('required')" class="text-danger warning-messages" >Last Name Field is required</label>
+        </div></div>
+</div>
+    </div>
+    <div>
+        <div class="form-row">
+            <div class="col">
+        Username:<input type="text" id="username" [formControlName]="'username'" placeholder="" class=" form-control mb-2">  
+        <div *ngIf="registerForm.get('username').touched">
+            <label *ngIf="registerForm.get('username').hasError('required')" class="text-danger warning-messages">Username Field is required</label>
+        
+        </div>
+            </div>
+        
+            <div class="col">
+        Contact Number<input type="text" id="contact_number" [formControlName]="'contact_number'" placeholder="" autofocus="" maxlength="10" class=" form-control mb-2">  
+        <div *ngIf="registerForm.get('contact_number').touched">
+            <label *ngIf="registerForm.get('contact_number').hasError('pattern')" class="text-danger warning-messages">Contact Number Field is required</label>
+    </div></div>
+</div>
+</div>
+        <div>
+            Email<input type="text" id="email" [formControlName]="'email'" placeholder="" class=" form-control mb-2">
+            <div *ngIf="registerForm.get('email').touched">
+                <label *ngIf="registerForm.get('email').hasError('pattern')" class="text-danger warning-messages" >Invalid
+                    email</label>
+                <label *ngIf="registerForm.get('email').hasError('required')" >Email
+                    field is required</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputPassword" class="sr-only">Password</label>
+            Password<input type="password" id="password" [formControlName]="'password'" class="form-control"
+                placeholder="" maxlength="15">
+            <div *ngIf="registerForm?.get('password')?.touched">
+                <label *ngIf="registerForm?.get('password')?.hasError('required')"
+                    class="text-danger warning-messages">Password
+                    is required</label>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="ConfirmPassword" class="sr-only">Confirm Password</label>
+            Confirm Password<input type="password" id="confirmPassword" [formControlName]="'confirmPassword'" class="form-control"
+                placeholder="" maxlength="15">
+            <div *ngIf="registerForm?.get('confirmPassword')?.touched">
+                <label *ngIf="registerForm?.get('confirmPassword')?.hasError('required')"
+                    class="text-danger warning-messages">Confirm Password
+                    is required</label>
+                <label *ngIf="registerForm?.get('confirmPassword')?.hasError('mismatch')"
+                    class="text-danger warning-messages">Password do not matched</label>
+            </div>
+        </div>
+        <div class="form-group ">
+            <label for="LinkedUrl" class="sr-only">Linked In</label>
+            LinkedIn URL<input type="text" id="linkedin_url" [formControlName]="'linkedin_url'" class="form-control"
+                placeholder="linkedin_url " autofocus="">
+
+        </div>
+        <div class="form-group ">
+            <label for="description" class="sr-only">Description</label>
+            Description<input type="text" id="description" [formControlName]="'description'" class="form-control"
+                placeholder="description" autofocus="">
+
+        </div>
+
+        <button class="btn btn-primary btn-block mt-4 " type="submit" [disabled]="!registerForm.valid">Register</button>
+        
+    </form>
+</div>
